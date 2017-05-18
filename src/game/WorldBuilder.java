@@ -76,13 +76,17 @@ public class WorldBuilder {
 					if (tiles[x][y][z] != Tile.WALL && regions[x][y][z] == 0){
 						int size = fillRegion(nextRegion++, x, y, z);
 						
-						if (size < 25)
-							removeRegion(nextRegion - 1, z);
+						removeSize(size, z);
 					}
 				}
 			}
 		}
 		return this;
+	}
+	
+	public void removeSize(int size, int z){
+		if (size < 25)
+			removeRegion(nextRegion - 1, z);
 	}
 	
 	private void removeRegion(int region, int z){
