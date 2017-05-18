@@ -130,8 +130,10 @@ public class Creature {
 	public void moveBy(int mx, int my, int mz){
 		if (mx==0 && my==0 && mz==0)
 			return;
-		
-		Tile tile = world.tile(x+mx, y+my, z+mz);
+		moveByStairs(mx, my, mz);
+	}
+	public void moveByStairs(int mx, int my, int mz){
+		Tile tile = world.tile(x+mx,  y+my, z+mz);
 		
 		if (mz == -1){
 			if (tile == Tile.STAIRS_DOWN) {
@@ -466,7 +468,9 @@ public class Creature {
 				inventory.add(item);
 			}
 		}
-		
+		equip2(item);
+	}
+	public void equip2(Item item){
 		if (item.attackValue() == 0 && item.rangedAttackValue() == 0 && item.defenseValue() == 0)
 			return;
 		
